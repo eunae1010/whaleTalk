@@ -1,0 +1,152 @@
+nav {
+  @include set-box(70px);
+  @extend %double;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  background: $bg-color;
+
+  .nav_list {
+    li {
+      padding: 15px 0;
+      text-align: center;
+      color: $gray2;
+      cursor: pointer;
+
+      &:hover {
+        color: $gray1;
+      }
+
+      i {
+        font-size: 22px;
+      }
+    }
+  }
+  .nav_top {
+    li {
+      &:nth-child(2) {
+        color: $gray1;
+      }
+    }
+  }
+  .nav_bottom {
+    li {
+      padding: 10px 0;
+
+      i {
+        font-size: 18px;
+      }
+    }
+  }
+}
+.chats {
+  margin-left: 70px;
+}
+.header {
+  @extend %double;
+  position: sticky;
+  top: 0;
+  height: 90px;
+  padding: 40px 20px 20px;
+  box-shadow: 0 5px 5px $opacity2;
+  z-index: 10;
+
+  .header_title {
+    font-size: 1.4em;
+  }
+  .header_menu {
+    span {
+      @include set-box(32px, 32px, 50%);
+      display: inline-block;
+      line-height: 32px;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        background: $opacity2;
+      }
+    }
+  }
+}
+.previews {
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+
+  .preview_list {
+    .preview_wrap {
+      display: block;
+      transition: 0.3s;
+      
+      &:hover {
+        background: #eee;
+      }
+
+      .preview {
+        display: flex;
+        align-items: center;
+        column-gap: 16px;
+        padding: 16px;
+      }
+    }
+  }
+}
+// 다른 부분에서 쓸 수 있게 밖에 빼줌
+.preview_column {
+  &:nth-child(2) {
+    @extend %double;
+    align-items: center;
+    column-gap: 16px;
+    width: 100%;
+
+    div {
+      width: auto;
+    }
+  }
+
+  .preview_pic {
+    @include set-box(50px, 50px, 50%);
+    background: $main-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 24px;
+      color: $bg-color;
+    }
+  }
+  .preview_nick {
+    width: 55vw;
+    margin-bottom: 6px;
+    font: {
+      size: 0.9em;
+      weight: 300;
+    }
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .preview_msg {
+    font: {
+      size: 0.8em;
+      weight: 200;
+    }
+    color: $gray2;
+    // 두줄만 보이게 함
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .preview_time {
+    width: 55px;
+    white-space: nowrap;
+    font: {
+      size: 0.7em;
+      weight: 200;
+    }
+    color: $gray3;
+  }
+}
